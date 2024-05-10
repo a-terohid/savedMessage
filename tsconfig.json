@@ -32,6 +32,6 @@
       "@/constants/*": ["src/constants/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/auth/[...nextauth]/route.jx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/auth/[...nextauth]/route.jx", "src/app/api/auth/[...nextauth]/route.ts"],
   "exclude": ["node_modules"]
 }

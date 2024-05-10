@@ -1,8 +1,8 @@
 import Signup from "@/template/Signup";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import connectDB from "@/utils/ConnectDB";
+import { authOptions } from "@/utils/next-auth-config";
 
 
 const page = async () => {

@@ -3,10 +3,11 @@ import User from "@/models/User";
 import { ERROR } from "@/types/enum";
 import connectDB from "@/utils/ConnectDB";
 import { verifyPassword } from "@/utils/auth";
-import NextAuth, { NextAuthOptions } from "next-auth"; 
+import exp from "constants";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions : NextAuthOptions  ={
+export const authOptions : NextAuthOptions  = {
     session : { strategy: "jwt" },
     providers : [ CredentialsProvider({
         credentials : {
@@ -38,7 +39,3 @@ export const authOptions : NextAuthOptions  ={
         }
     })]
 }
-
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };
