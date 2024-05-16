@@ -14,7 +14,8 @@ const config: Config = {
       "Gray": "#d9d9d9",
       "Yellow": "#FCA311",
       "Light_blue": "#32A6FE",
-      "f6": "#f6f6f6"
+      "f6": "#f6f6f6",
+      "Red" : "#d90429"
      }
     },
     fontFamily: {

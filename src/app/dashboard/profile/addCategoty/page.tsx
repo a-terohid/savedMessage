@@ -1,8 +1,8 @@
-import DashboardPage from '@/template/DashboardPage';
-import { getServerSession } from 'next-auth';
 import User from '@/models/User';
 import connectDB from '@/utils/ConnectDB';
 import { authOptions } from '@/utils/next-auth-config';
+import { getServerSession } from 'next-auth';
+import AddCategory from "@/template/AddCategory";
 
 const page = async () => {
 
@@ -10,7 +10,7 @@ const page = async () => {
     const session = await getServerSession( authOptions )
     const user = await User.findOne({ email : session?.user?.email })
 
-    return ( <DashboardPage createdAt={ user.createdAt } /> );
+    return (<AddCategory user={user} />);
 };
 
 export default page;

@@ -21,8 +21,8 @@ const MessageSchema = new Schema< Message , Schema.Types.ObjectId >({
         default: ""
     },
 
-} , { collection : "saved-message-user" } )
+} , { collection : "saved-message-message" } )
 
-const MESSAGE = models.MESSAGE || model("MESSAGE", MessageSchema);
+const message = models.message || model("message", MessageSchema);
 
-export default MESSAGE;
+export default message;
