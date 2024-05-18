@@ -21,7 +21,7 @@ const EditrUserPage = ( { user } : ProfilePageProps ) => {
         setCategory(value)
     }
 
-    const editeHandler = async ( event: any ) => {
+    const AddHandler = async ( event: any ) => {
 
         event.preventDefault()
 
@@ -41,7 +41,9 @@ const EditrUserPage = ( { user } : ProfilePageProps ) => {
         if (resData.error) {
             toast.error(resData.error);
         } else {
-            window.location.reload()
+            toast.success(resData.message);
+            router.refresh()
+
         }
 
     }
@@ -61,7 +63,7 @@ const EditrUserPage = ( { user } : ProfilePageProps ) => {
             <div className="flex items-center justify-center my-8 " >
                 {
                     loading ? <Loader/> 
-                    : <button type="submit" onClick={ ( e ) => editeHandler( e ) } className=" bg-Dark text-Yellow font-bold md:px-16  px-6 py-1 rounded-md " >ADD</button>
+                    : <button type="submit" onClick={ ( e ) => AddHandler( e ) } className=" bg-Dark text-Yellow font-bold md:px-16  px-6 py-1 rounded-md " >ADD</button>
                 }
             </div>
             <div className=' flex flex-col md:gap-x-14 lg:gap-x-20  md:py-4 py-3 border-t-2'>

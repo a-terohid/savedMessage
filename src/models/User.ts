@@ -39,7 +39,7 @@ const UserSchema = new Schema<USER , Schema.Types.ObjectId>({
     },
     Categories: {
         type : [String],
-        default : []
+        default : ["Uncategorized"]
     }
 
     

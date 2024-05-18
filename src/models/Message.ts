@@ -18,7 +18,7 @@ const MessageSchema = new Schema< Message , Schema.Types.ObjectId >({
     Category: {
         type : String,
         required : true,
-        default: ""
+        default: "Uncategorized"
     },
 
 } , { collection : "saved-message-message" } )

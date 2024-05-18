@@ -1,11 +1,31 @@
-import React from 'react';
+import User from "@/models/User";
+import MyAdvertimessagePage from "@/template/MymessagePage";
+import MymessagePage from "@/template/MymessagePage";
+import connectDB from "@/utils/ConnectDB";
+import { authOptions } from "@/utils/next-auth-config";
+import { getServerSession } from "next-auth";
 
-const page = () => {
-    return (
-        <div>
-            my-Messages
-        </div>
-    );
+
+const page = async () => {
+
+    await connectDB();
+    const session = await getServerSession( authOptions )
+    const [user] = await User.aggregate([ 
+        { $match: { email: session?.user?.email } } , 
+        {
+            $lookup: {
+                from: "saved-message-message",
+                foreignField: "UserId",
+                localField: "_id",
+                as: "message",
+            }
+        }
+    ])
+
+    const userMessage = user.message;
+    
+    
+    return ( <MyAdvertimessagePage userMessage={ userMessage }  /> );
 };
 
 export default page;

@@ -32,6 +32,8 @@ export enum MESSAGE {
     USER_EDITE = "user edited successfully!",
     AD_EDITE = "Advertisement edited successfully!",
     AD_DELETE = "Advertisement deleted successfully!",
+    MG_DELETE= "Message deleted successfully!",
+    CATEGORY_DELETE = "Categoty deleted successfully!",
     CHECK = "Recheck request successfully sent",
     AD_PUBLISHED = "Advertisement published successfully!",
     AD_REJECT = "Advertisement rejected!",

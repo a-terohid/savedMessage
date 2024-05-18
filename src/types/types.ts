@@ -63,8 +63,6 @@ export type cardProps = {
 
 
 export type DetailsPageProps = {
-    advertisments : MessageMOGO
+    Message : MessageMOGO
     dashboard ?: boolean , 
-    waiting ?: boolean ,
-    admin ?: boolean,
 }
