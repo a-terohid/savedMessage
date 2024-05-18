@@ -10,7 +10,7 @@ const DeleteMsButton = ({ _id }:any) => {
 
     const deleteHandler = async () => {
 
-        const res = await fetch(`/api/messages/${ _id }`, {
+        const res = await fetch(`/api/messages//${ _id }`, {
           method: "DELETE",
         });
 

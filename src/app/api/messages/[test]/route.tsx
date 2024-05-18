@@ -7,14 +7,13 @@ import connectDB from "@/utils/ConnectDB";
 import { authOptions } from "@/utils/next-auth-config";
 import message from "@/models/Message";
 
-
 export async function DELETE( req : Request, context : any ) {
 
     try{
 
         await connectDB()
 
-        const id = context.params.messageid
+        const id = context.params.test
         
         const session = await getServerSession( authOptions )
         if ( !session ) {

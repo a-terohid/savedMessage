@@ -1,47 +1,53 @@
 "use client"
 
-import Input from "@/module/Input";
-import Loader from "@/module/Loader";
-import { ProfilePageProps } from "@/types/types";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import Input from '@/module/Input';
+import Loader from '@/module/Loader';
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react';
 import { Toaster, toast } from "react-hot-toast";
 
-
-const AddMessage = ({ user } : ProfilePageProps) => {
+const EditMessagePage = ({Message , user}:any) => {
 
     const { Categories } = user
-    
+
+    const { _id,
+            Title,
+            Description, 
+            Category } = Message
+
     const router = useRouter()
 
     const [loading, setLoading] = useState<boolean>(false);
-    const [ AddMassegeData , setAddAdvertisementData ] = useState({
-        title : "",
-        description : ``,
-        category : "Uncategorized" ,
+    const [ MessageData , setMessageData ] = useState({
+        _id ,
+        title : Title,
+        description : Description,
+        category : Category ,
     })
 
+    
+
     const { title,
-            description,  
-            category, 
-            } = AddMassegeData
+            description, 
+            category,   } = MessageData
+
+        
+            
 
     const changeHandler = ( event: any ) => {
         const { name , value } = event.target
-        setAddAdvertisementData({ ...AddMassegeData , [ name ] : value })
-        console.log(AddMassegeData);
-        
+       setMessageData({ ...MessageData , [ name ] : value })
     }
 
-    const clickHandler = async ( event: any ) => {
+    const editeHandler = async ( event: any ) => {
 
         event.preventDefault()
 
         setLoading(true);
 
         const res = await fetch("/api/messages", {
-            method: "POST",
-            body: JSON.stringify( AddMassegeData ),
+            method: "PATCH",
+            body: JSON.stringify( MessageData ),
             headers: { "Content-Type": "application/json" },
         });
 
@@ -53,14 +59,14 @@ const AddMessage = ({ user } : ProfilePageProps) => {
           toast.error(data.error);
         } else {
           toast.success(data.message);
-          router.push( "/dashboard/my-Messages" )
+          router.push( `/dashboard/my-Messages/${ _id }` )
         }
     }
 
 
     return (
         <div className="py-4 px-6" >
-            <h1 className=" font-bold md:text-2xl text-xl mb-3 font-Exo_2" >Add Message</h1>
+            <h1 className=" font-bold md:text-2xl text-xl mb-3 font-Exo_2" >Edite Message</h1>
             <div className="flex flex-col gap-y-6 md:mr-9 md:ml-14 font-Grandstander" >
                 <Input
                     value={ title }
@@ -76,12 +82,12 @@ const AddMessage = ({ user } : ProfilePageProps) => {
                     label= "Description:"
                     type = "text"
                     textarea = {true} />
-                <div className="flex flex-col gap-y-2 ">
+                    <div className="flex flex-col gap-y-2 ">
                     <label> Category:</label>
-                    <select className="ml-4 rounded text-Dark py-2 pl-3 text-sm w-[200px]" name="category" onChange={changeHandler} >
-                        <option value="Uncategorized" className="h-6"  selected >Uncategorized</option>
+                    <select className="ml-4 rounded text-Dark py-2 pl-3 text-sm w-[200px]" name="category" value={category} onChange={changeHandler} >
+                        <option value="Uncategorized" className="h-6"  >Uncategorized</option>
                         {
-                            Categories.map((cat , index) => <option key={index}  value={`${cat}`} >{cat}</option>)
+                            Categories.map((cat:any, index:any) => <option key={index}  value={`${cat}`} >{cat}</option>)
                         }
                     </select>
                 </div>
@@ -89,7 +95,7 @@ const AddMessage = ({ user } : ProfilePageProps) => {
             <div className="flex items-center justify-center mt-8 mb-4" >
                 {
                     loading ? <Loader/> 
-                    : <button type="submit" onClick={ ( e ) => clickHandler( e ) } className=' text-[#1b4332] bg-[#95d5b2] md:px-8 text-sm md:font-bold md:text-base   px-3 py-1 rounded-md '>Add</button>
+                    : <button type="submit" onClick={ ( e ) => editeHandler( e ) }  className=" text-[#1b4332] bg-[#95d5b2]  font-bold md:px-16  px-6 py-1 rounded-md " >Edite</button>
                 }
             </div>
             <Toaster />
@@ -97,5 +103,4 @@ const AddMessage = ({ user } : ProfilePageProps) => {
     );
 };
 
-
-export default AddMessage;
+export default EditMessagePage;
