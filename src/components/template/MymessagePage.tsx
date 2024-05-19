@@ -10,7 +10,7 @@ const MyAdvertimessagePage = ({ userMessage }: any) => {
             <p className="font-bold text-lg md:text-2xl mb-5 font-Exo_2" >My Messages:</p>
             <div className='flex flex-wrap gap-6 items-center justify-center mb-2' >
                     { userMessage.length ? null : 
-                            <p className=' font-bold ml-5 mt-4 text-sm text-orange' >{ ERROR.NO_ADS }</p> }
+                            <p className=' font-bold ml-5 mt-4 text-sm text-orange' >{ ERROR.NO_MS }</p> }
                     { userMessage.map(( message : any ) => (
                         <Card key={ message._id } data={message}  dashboard={ true }  />))
                     }

@@ -66,7 +66,7 @@ export async function POST( req : Request ){
             console.log( newMessage );
 
             return NextResponse.json(
-                { message: MESSAGE.NEW_ADVERTISEMENT },
+                { message: MESSAGE.NEW_MESSAGE },
                 { status: 201 }
             );
 

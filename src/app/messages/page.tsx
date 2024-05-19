@@ -24,7 +24,6 @@ const page = async ({ searchParams }:any) => {
 
     const userMessage = user.message;
     const Categories = user.Categories
-    console.log("ttt+", searchParams.category)
     
     let finalData = userMessage;
     if (searchParams.category) {
