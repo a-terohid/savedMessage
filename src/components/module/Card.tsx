@@ -28,7 +28,7 @@ const Card = ({ data , dashboard = false , waiting = false , admin = false , use
                 <p className="flex gap-x-2 items-start text-xs  overflow-hidden  text-ellipsis  md:text-base font-Kanit" >{ Description }</p>
             </div>
             <div className="flex justify-between mt-3" >
-                <p className="text-sm text-Red" onClick={copyHandler} ><MdContentCopy /></p>
+                <p className="text-sm text-Red hover:cursor-pointer " onClick={copyHandler} ><MdContentCopy /></p>
                 {
                     !dashboard? 
                          <Link href={`/messages/${_id}`} className="flex gap-x-1 text-orange items-center text-xs" ><BiLeftArrowAlt />See Message</Link>
