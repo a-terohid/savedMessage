@@ -63,10 +63,10 @@ const ProfilePage = ( { user } : ProfilePageProps ) => {
                 <div className=' font-Grandstander' >
                     <p className=' font-bold md:text-lg' >Categories:</p>
                     {
-                        loading ? <Loader /> : <div className='flex ml-8 mt-3 gap-3 '>
+                        loading ? <Loader /> : <div className=' flex-wrap flex ml-8 mt-3 gap-3 '>
                          { Categories.length ? 
                             Categories.map((categoty , index) => 
-                                <p key={index} className='flex items-center justify-center gap-x-1 bg-Yellow text-Dark text-xs md:text-base md:px-3 md:py-2 w-fit rounded-lg px-2 py-1' >{categoty}{categoty ==="Uncategorized"? null :<p> |</p>}{categoty ==="Uncategorized"? null : <MdDeleteForever onClick={() => DeleteHandler(categoty||"" , event)} className=' cursor-pointer text-lg' />}</p>) : <span className=' ml-3 text-sm md:text-base italic text-orange ' >You dont have any Categories!</span> } 
+                                <p key={index} className='flex items-center  justify-center gap-x-1 bg-Yellow text-Dark text-xs md:text-base md:px-3 md:py-2 w-fit rounded-lg px-2 py-1' >{categoty}{categoty ==="Uncategorized"? null :<p> |</p>}{categoty ==="Uncategorized"? null : <MdDeleteForever onClick={() => DeleteHandler(categoty||"" , event)} className=' cursor-pointer text-lg' />}</p>) : <span className=' ml-3 text-sm md:text-base italic text-orange ' >You dont have any Categories!</span> } 
                      </div>
                     }
                 </div>
