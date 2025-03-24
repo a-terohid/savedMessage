@@ -1,5 +1,4 @@
 import User from "@/models/User";
-import MyAdvertimessagePage from "@/template/MymessagePage";
 import MymessagePage from "@/template/MymessagePage";
 import connectDB from "@/utils/ConnectDB";
 import { authOptions } from "@/utils/next-auth-config";
@@ -25,7 +24,7 @@ const page = async () => {
     const userMessage = user.message;
     
     
-    return ( <MyAdvertimessagePage userMessage={ userMessage }  /> );
+    return ( <MymessagePage userMessage={ userMessage }  /> );
 };
 
 export default page;

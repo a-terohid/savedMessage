@@ -11,6 +11,7 @@ export enum ERROR {
     USER_EXIST = "This user already exists!",
     CANT_FIND_USER = "This user cannot be found!",
     CANT_FIND_ADVERTISMEnT = "This mwssage cannot be found!",
+    CANT_FIND_Credential = "This Credential cannot be found!",
     INVALID_DATA = "please enter a valid data!",
     INVALID_CATEGORY = "there is no category with this name!",
     REPETE_CATEGORY = "there is a category with this name!",
@@ -20,6 +21,7 @@ export enum ERROR {
     PROBLEM = "There is a Problem!",
     LOGIN = "Please login to your account!",
     NO_MS = "No message have been added!",
+    NO_CR = "No Credentials have been added!",
     NO_USER = "There is no user!",
     AD_ACCESS = "Your access is limited to this ad!",
     ACCESS_DENIED = "access denied!",
@@ -27,12 +29,14 @@ export enum ERROR {
 
 export enum MESSAGE {
     NEW_MESSAGE = "Message cteated successfully!",
+    NEW_CREDENTIALS = "Credentials cteated successfully!",
     NEW_USER = "user cteated successfully!",
     NEW_CATEGORY = "Category cteated successfully!",
     USER_EDITE = "user edited successfully!",
     AD_EDITE = "Mesage edited successfully!",
     AD_DELETE = "Message deleted successfully!",
     MG_DELETE= "Message deleted successfully!",
+    CR_DELETE= "Credentials deleted successfully!",
     CATEGORY_DELETE = "Categoty deleted successfully!",
     PROMOT = "User promoted to Admin"
 }

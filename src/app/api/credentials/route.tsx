@@ -1,12 +1,11 @@
-import { ERROR, MESSAGE } from "@/types/enum";
-import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
+import Credentials from "@/models/Credentials";
 import User from "@/models/User";
-import { Types } from "mongoose";
+import { ERROR, MESSAGE } from "@/types/enum";
 import connectDB from "@/utils/ConnectDB";
 import { authOptions } from "@/utils/next-auth-config";
-import message from "@/models/Message";
-
+import { Types } from "mongoose";
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
 
 export async function POST( req : Request ){
 
@@ -16,8 +15,8 @@ export async function POST( req : Request ){
 
         const { 
             title,
-            description,
-            category,
+            username,
+            password,
         } = await req.json()
 
         const session = await getServerSession( authOptions )
@@ -37,36 +36,28 @@ export async function POST( req : Request ){
         }
 
         if( !title ||
-            !description ||
-            !category )
+            !username ||
+            !password )
             {
                 return NextResponse.json(
                     { error: ERROR.INVALID_DATA },
                     { status : 422 }
                 )
             }
-
-            const IsCategory = user.Categories.includes(category)
-            if( !IsCategory ){
-                return NextResponse.json(
-                    { error: ERROR.INVALID_CATEGORY },
-                    { status : 422 }
-                )
-            }            
-
+     
             
-            const newMessage = await message.create({
-                Title : title,
-                Description: description,
-                Category: category,
+            const newCredentials = await Credentials.create({
+                title,
+                username,
+                password,
                 UserId : new Types.ObjectId(user._id),
             })
             
 
-            console.log( newMessage );
+            console.log( newCredentials );
 
             return NextResponse.json(
-                { message: MESSAGE.NEW_MESSAGE },
+                { message: MESSAGE.NEW_CREDENTIALS },
                 { status: 201 }
             );
 
@@ -79,6 +70,7 @@ export async function POST( req : Request ){
 
 }
 
+
 export async function PATCH( req : Request ) {
 
     try{
@@ -88,9 +80,9 @@ export async function PATCH( req : Request ) {
         const { 
             _id,
             title,
-            description,
-            category,
-            } = await req.json()
+            username,
+            password,
+        } = await req.json()
 
 
         const session = await getServerSession( authOptions )
@@ -111,27 +103,27 @@ export async function PATCH( req : Request ) {
 
 
         if( !title ||
-            !description ||
-            !category )
+            !username ||
+            !password )
             {
                 return NextResponse.json(
                     { error: ERROR.INVALID_DATA },
                     { status : 422 }
                 )
             }
+     
 
+            const Credential = await Credentials.findOne({ _id })
 
-            const Message = await message.findOne({ _id })
-
-            if( !Message ){
+            if( !Credential ){
                 return NextResponse.json(
-                    { error: ERROR.CANT_FIND_ADVERTISMEnT },
+                    { error: ERROR.CANT_FIND_Credential },
                     { status: 404 }
                 );
             }
 
 
-            if( !user._id.equals(Message.UserId) ) {
+            if( !user._id.equals(Credential.UserId) ) {
                 return NextResponse.json(
                     { error: ERROR.AD_ACCESS },
                     { status: 403 }
@@ -139,11 +131,11 @@ export async function PATCH( req : Request ) {
             }
 
 
-            Message.Title = title,
-            Message.Description= description,
-            Message.Category= category,
+            Credential.title = title,
+            Credential.username= username,
+            Credential.password= password,
         
-            Message.save()
+            Credential.save()
 
             return NextResponse.json(
                 { message: MESSAGE.AD_EDITE },

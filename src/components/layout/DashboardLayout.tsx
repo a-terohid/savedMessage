@@ -38,7 +38,9 @@ const DashboardLayout = async ({ children , role , email }: dashboardLayoutProps
                 <Link className={ LinkStyle }  href="/dashboard" >Dashboard</Link>
                 <Link className={ LinkStyle }  href="/dashboard/profile" >Profile</Link>
                 <Link className={ LinkStyle }  href="/dashboard/my-Messages" >My Messages</Link>
+                <Link className={ LinkStyle }  href="/dashboard/my-credentials" >My Credentials</Link>
                 <Link className={ LinkStyle }  href="/dashboard/add-Messages" >Add Messagaes</Link>
+                <Link className={ LinkStyle }  href="/dashboard/add_Credentials" >Add Credentials</Link>
                 { role == ROLE.OWNER ? <Link className={ LinkStyle } href="/dashboard/users" >Users</Link> : null }
             </div>
             <div className=' bg-Dark_gray w-full rounded-xl shadow-xl' >{ children }</div>

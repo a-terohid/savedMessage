@@ -32,8 +32,8 @@ const Navbar = () => {
                             :  <Link href="/signin" className=' bg-Yellow text-Dark px-3 py-2 rounded ' >Sign in</Link>
 
                         }
-                        <Link href="/" >Home page</Link>
                         <Link href='/messages' >Messages</Link>
+                        <Link href="/credentials" >Credentials</Link>
                     </div>
                     <div className='sm:text-2xl text-lg' >
                         <Link href="/" className=' font-Exo_2' >Saved Messages</Link>
@@ -41,8 +41,8 @@ const Navbar = () => {
                 </div>
                 {
                     flag ? <div className=' gap-y-4 flex flex-col py-4 ' >
-                        <Link href="/" onClick={ clickHandler } >Home page</Link>
                         <Link href='/messages'onClick={ clickHandler } >Messages</Link>
+                        <Link href="/credentials" onClick={ clickHandler } >credentials</Link>
                         {
                             status == "authenticated" ?
                                 <Link onClick={ clickHandler } href="/dashboard"className="flex items-center gap-x-2" ><IoPersonCircleOutline className=" text-Yellow -mr-1 -mt-1 text-3xl"/>Dashboard</Link> 

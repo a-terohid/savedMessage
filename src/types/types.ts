@@ -66,3 +66,11 @@ export type DetailsPageProps = {
     Message : MessageMOGO
     dashboard ?: boolean , 
 }
+
+
+export interface Credentials_IF {
+    title: string,
+    username: string,
+    password: string,
+    UserId : Schema.Types.ObjectId,
+}
